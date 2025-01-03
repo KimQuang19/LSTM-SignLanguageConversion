@@ -1,45 +1,45 @@
 # LSTM-SignLanguageConversion
-> Dự án  sử dụng **mạng nơ-ron dài ngắn hạn (LSTM)**  để nhận diện và chuyển đổi các cử chỉ ngôn ngữ ký hiệu thành văn bản có thể đọc được. Dự án này có thể ứng dụng trong các công cụ hỗ trợ giao tiếp cho người khiếm thị hoặc người có khó khăn trong việc giao tiếp bằng lời nói.
+> The project uses **Long Term Convolutional Neural Networks (LSTMs)** to recognize and convert sign language gestures into readable text. This project can be applied in communication support tools for the blind or people who have difficulty communicating by speech.
 ## Target
-Mục tiêu của dự án là phát triển một hệ thống có thể nhận dạng các cử chỉ ngôn ngữ ký hiệu và chuyển chúng thành văn bản tương ứng. Điều này sẽ giúp tạo ra các công cụ hỗ trợ giao tiếp cho những người sử dụng ngôn ngữ ký hiệu trong cuộc sống hàng ngày.
-## Tính năng
-+ Nhận diện ngôn ngữ ký hiệu: Hệ thống có thể nhận diện các cử chỉ ngôn ngữ ký hiệu từ video hoặc hình ảnh.
-+ Chuyển đổi thành văn bản: Các cử chỉ ngôn ngữ ký hiệu sẽ được chuyển đổi thành văn bản thông qua mô hình học sâu LSTM.
-+ Ứng dụng trong giao tiếp hằng ngày: Dự án có thể sử dụng để hỗ trợ giao tiếp cho người khiếm thị hoặc những người giao tiếp bằng ngôn ngữ ký hiệu.
-## Công nghệ
-+ Ngôn ngữ lập trình: Python
-+ Thư viện: TensorFlow / Keras, OpenCV, NumPy, Pandas, Matplotlib, scikit-learn,...
-## Dữ liệu
-Thay vì sử dụng dữ liệu mẫu thì chúng tôi thực hiện thu thập dữ liệu theo thời gian thực. Để nhận diện được các ký hiệu, chúng ta cần sử dụng webcam để nhận dữ liệu.
+The goal of the project is to develop a system that can recognize sign language gestures and convert them into corresponding text. This will help create communication support tools for people who use sign language in their daily lives.
+## Features
++ Sign language recognition: The system can recognize sign language gestures from videos or images.
++ Convert to text: Sign language gestures will be converted into text through the LSTM deep learning model.
++ Applications in daily communication: The project can be used to support communication for the blind or those who communicate using sign language.
+## Technology
++ Programming language: Python
++ Libraries: TensorFlow / Keras, OpenCV, NumPy, Pandas, Matplotlib, scikit-learn,...
+## Data
+Instead of using sample data, we collect data in real time. To recognize symbols, we need to use a webcam to receive data.
 
 ```cap = cv2.VideoCapture(0)```
 
 ```success, frame = cap.read()```
 
-Do OpenCV mặc định sử dụng không gian màu BGR, trong khi MediaPipe thường yêu cầu RGB. Nên ta chuyển từ ảnh BGR sang ảnh RGB để dễ dàng xử lý. Sau đó ta sử dụng mô hình Holistic của MediaPipe để xử lý ảnh và trả về kết quả các đặc điểm được phát hiện trong hình ảnh
+Because OpenCV uses BGR color space by default, while MediaPipe usually requires RGB. So we convert from BGR image to RGB image for easy processing. Then we use the Holistic model of MediaPipe to process the image and return the results of the detected features in the image
 
 ```def mediapipe_detection(image, model):```
 
-  ```image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)```
-  
-  ```image.flags.writeable = False```
-  
-  ```results = model.process(image)```
-  
-  ```image.flags.writeable = True```
-  
-  ```image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)```
-  
-  ```return image, results```
-  
+```image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)```
+
+```image.flags.writeable = False```
+
+```results = model.process(image)```
+
+```image.flags.writeable = True```
+
+```image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)```
+
+```return image, results```
+
 ![example](data.jpg)
 
-## Kết quả
-Cấu trúc mô hình:
+## Results
+Model structure:
 
 ![example](cautruc.jpg)
 
-Kết quả mô hình:
+Model results image:
 
 ![example](ketquamohinh.jpg)
 
@@ -47,12 +47,13 @@ Accurancy:
 
 ![example](danhgia.jpg)
 
-## Tương lai phát triển
-+ Cải thiện độ chính xác của mô hình đối với các ngữ cảnh ngôn ngữ ký hiệu phức tạp.
-+ Xây dựng một giao diện người dùng dễ sử dụng để người dùng có thể tương tác trực tiếp với hệ thống chuyển đổi ngôn ngữ ký hiệu.
+## Future Development
++ Improve the accuracy of the model for complex sign language contexts.
 
-## Liên hệ
-Nếu bạn có bất kỳ câu hỏi hoặc đóng góp nào về dự án, vui lòng liên hệ với chúng tôi qua email: quangh922@gmail.com.
++ Build an easy-to-use user interface so that users can interact directly with the sign language conversion system.
 
-## Giấy phép
-Dự án này được phát hành dưới giấy phép **MIT License**.
+## Contact
+If you have any questions or contributions about the project, please contact us via email: quangh922@gmail.com.
+
+## License
+This project is released under the **MIT License**.
