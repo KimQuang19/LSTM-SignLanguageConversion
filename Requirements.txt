@@ -1,0 +1,11 @@
+tensorflow
+keras
+opencv-python
+numpy
+pandas
+matplotlib
+scikit-learn
+imbalanced-learn
+seaborn
+PyDrive
+mediapipe
